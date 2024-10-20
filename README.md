@@ -2,23 +2,19 @@
 
 ## Overview
 
-TODO: Write a project description
+This is a bouncy ball demo game. Our player, the evil circle, spawns in the center of the window and tries to eat all the bouncy balls to win the game. Most of the implementation was done in javascript, and a little bit of HTML and CSS.
+
+## Compiling and Running
+
+To run,
+
+Clone the repository
+- In VSCode, if have the preview extension added, right click on index.html and click 'show preview'
+- (optional) To view in localhost,
+  - open localhost:3000 in your browser
 
 ## Sources and Credits
 
-TODO: You must credit the sources and authors of any code, libraries, or other
-assets you use in your project. If you leave this section blank, your project
-will be considered in violation of the Academic Honesty policy unless you truly
-created everything from scratch with no outside help. If you need to use a
-source that you cannot credit (e.g. a classmate's work), you must get explicit
-permission from your instructor.
-
-A simple bulleted list below is sufficient. For example:
-
-- Bootstrap: https://getbootstrap.com/
-- jQuery: https://jquery.com/
-- Background image: https://unsplash.com/photos/...
-- Sound effects: https://freesound.org/people/...
-- Icons: https://fontawesome.com/
-- Fonts: https://fonts.google.com/
-- etc.
+- mdn web docs
+  - https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Classes_in_JavaScript
+  - https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Classes_in_JavaScript
