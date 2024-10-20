@@ -34,6 +34,7 @@ class EvilCircle extends Shape {
     super(x, y, 20, 20);
     this.color = "white";
     this.size = 10;
+    
     window.addEventListener("keydown", (e) => {
       switch (e.key) {
         case "a":
@@ -52,7 +53,7 @@ class EvilCircle extends Shape {
     });
   }
 
-
+  // Draw the Ecircle
   draw() {
     ctx.beginPath();
     ctx.lineWidth = 3; 
@@ -61,6 +62,7 @@ class EvilCircle extends Shape {
     ctx.stroke();
   }
 
+  // Make sure the Ecircle doesnt go out of bounds
   checkBounds() {
     if (this.x + this.size >= width) {
       this.x = -Math.abs(this.x);
@@ -79,18 +81,20 @@ class EvilCircle extends Shape {
     }
   }
 
-  collisionDetect(exists) {
-    if (exists == true) {
-      const dx = this.x - ball.x;
-      const dy = this.y - ball.y;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-
-      if (distance < this.size + ball.size) {
-        ball.color = this.color = rgba(0, 0, 0, 0); // make the color black when eaten?
+  collisionDetect() {
+    for (const ball of balls) {
+      if (ball.exists == true) {
+        const dx = this.x - ball.x;
+        const dy = this.y - ball.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        // If Evillcircle and ball collides then "delete" the ball
+        if (distance < this.size + ball.size) {
+          ball.exists = false;
+        }
       }
     }
-    
-}
+  }
 
 }
 
@@ -132,7 +136,7 @@ class Ball extends Shape {
 
   collisionDetect() {
     for (const ball of balls) {
-      if (!(this === ball) && balls.exists == true) {
+      if (!(this === ball) && ball.exists == true) {
         const dx = this.x - ball.x;
         const dy = this.y - ball.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
@@ -163,15 +167,14 @@ while (balls.length < 25) {
   balls.push(ball);
 }
 
-// Create the evilcircle on the top-left
-const circle = new EvilCircle(50,50);
+// Create the evilcircle on the middle
+const circle = new EvilCircle(width/2,height/2);
 
 function loop() {
   ctx.fillStyle = "rgba(0, 0, 0, 0.25)";
   ctx.fillRect(0, 0, width, height);
 
-  
-
+  // Iterate through the balls and if exists then draw, update, collision
   for (const ball of balls) {
     if (ball.exists) {
       ball.draw();
