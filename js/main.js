@@ -6,6 +6,12 @@ const ctx = canvas.getContext("2d");
 const width = (canvas.width = window.innerWidth);
 const height = (canvas.height = window.innerHeight);
 
+// Variables for count paragraph
+const p = document.querySelector("p");
+let count = 0;
+
+const h2 = document.querySelector("h2");
+
 // function to generate random number
 
 function random(min, max) {
@@ -34,7 +40,7 @@ class EvilCircle extends Shape {
     super(x, y, 20, 20);
     this.color = "white";
     this.size = 10;
-    
+
     window.addEventListener("keydown", (e) => {
       switch (e.key) {
         case "a":
@@ -91,6 +97,12 @@ class EvilCircle extends Shape {
         // If Evillcircle and ball collides then "delete" the ball
         if (distance < this.size + ball.size) {
           ball.exists = false;
+          count--;
+          p.textContent = "Ball Count: " + count;
+        }
+        // If no more balls to collect
+        if (count == 0) {
+          h2.textContent = "Congratulations, you've won!"
         }
       }
     }
@@ -163,8 +175,10 @@ while (balls.length < 25) {
     randomRGB(),
     size
   );
-
   balls.push(ball);
+  // To make the ball count appear when starting
+  count++; // count = 25;
+  p.textContent = "Ball count: " + count;
 }
 
 // Create the evilcircle on the middle
@@ -185,7 +199,6 @@ function loop() {
     circle.checkBounds();
     circle.collisionDetect();
   }
-
   requestAnimationFrame(loop);
 }
 
