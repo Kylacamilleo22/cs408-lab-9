@@ -13,6 +13,9 @@ Clone the repository
 - (optional) To view in localhost,
   - open localhost:3000 in your browser
 
+To play,
+- Use 'a', 'w', 's', 'd' to move the circle
+
 ## Sources and Credits
 
 - mdn web docs
